@@ -1,0 +1,51 @@
+<div class="card">
+    <div class="card-header bg-nb-black">
+        <h3 class="card-title text-white">
+            <p><i class='far fa-image'></i> Upload a image!</p>
+        </h3>
+    </div>
+    <div class="card-body bg-nb-white">
+        <form action="/images" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" name="image" id="inputGroup" class='custom-file-input' aria-describedby="inputGroupFileAddon"
+                            required>
+                        <label class='custom-file-label' for="inputGroupFile">Choose your file!</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" name="title" id="" class='form-control' placeholder="Title" required>
+            </div>
+            <div class="form-group">
+                <textarea name="description" id="" cols="30" rows="2" class='form-control' placeholder="Description for your image!"></textarea>
+            </div>
+            <div class="form-group">
+                <button class='btn bg-nb-green text-nb-white'><i class="fa fa-upload"></i> Upload Image</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-header bg-nb-black text-nb-white">
+        <h3><i class="far fa-images"></i> Recent Uploads</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            {{#if images}}
+            {{#each images}}
+            <div class="col-md-4">
+                <a class='img-card' href="/images/{{uniqueId}}">
+                    <img src="./public/upload/{{filename}}" alt="Imagen no cargada!." class='w-100 h-100 pt-3 text-center'>
+                </a>
+            </div>
+            {{/each}}
+            {{else}}
+            <h2 class='h4 text-nb-purple text-center p-5'>No hay imagenes subidas, Se el primero.</h2>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
